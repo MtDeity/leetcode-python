@@ -8,6 +8,10 @@ class Node:
 
 class Solution:
     def postorder(self, root: 'Node') -> List[int]:
+        result = []
         if not root:
-            return []
-        return [j for i in root.children for j in self.postorder(i)] + [root.val]
+            return result
+        for child in root.children:
+            result += self.postorder(child)
+        result.append(root.val)
+        return result
