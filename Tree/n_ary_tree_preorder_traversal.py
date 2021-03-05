@@ -10,7 +10,7 @@ class Solution:
     def preorder(self, root: 'Node') -> List[int]:
         result = []
         if not root:
-            return []
+            return result
         result.append(root.val)
         for child in root.children:
             result += self.preorder(child)
