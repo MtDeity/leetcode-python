@@ -6,13 +6,13 @@ def get_indices_of_item_wights(arr: List[int], limit: int) -> List[int]:
     if len(arr) < 2:
         return []
 
-    diffs: Dict[int, int] = {}
+    diff_indices: Dict[int, int] = {}
     for index, weight in enumerate(arr):
-        if weight in diffs:
-            diff = diffs[weight]
-            return [index, diff]
+        if weight in diff_indices:
+            diff_index = diff_indices[weight]
+            return [index, diff_index]
         diff = limit - weight
-        diffs[diff] = index
+        diff_indices[diff] = index
     return []
 
 
