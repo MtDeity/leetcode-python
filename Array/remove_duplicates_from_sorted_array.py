@@ -6,9 +6,9 @@ class Solution:
         length = len(nums)
         if length <= 1:
             return length
-        i = 1
+        i = 0
         for num in nums:
-            if nums[i - 1] != num:
-                nums[i] = num
+            if nums[i] != num:
                 i += 1
-        return i
+                nums[i] = num
+        return i + 1
