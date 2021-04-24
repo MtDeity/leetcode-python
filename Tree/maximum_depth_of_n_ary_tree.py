@@ -14,8 +14,6 @@ class Solution:
     def maxDepth(self, root: Node) -> int:
         if not root:
             return 0
-        depth = 0
-        if root.children:
-            for child in root.children:
-                depth = max(depth, self.maxDepth(child))
-        return depth + 1
+        if not root.children:
+            return 1
+        return max(self.maxDepth(child) for child in root.children) + 1
