@@ -1,9 +1,11 @@
+from typing import List, Set
+
+
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        dict = {}
+        st: Set[int] = set()
         for num in nums:
-            if num in dict:
+            if num in st:
                 return True
-            else:
-                dict[num] = 1
+            st.add(num)
         return False
