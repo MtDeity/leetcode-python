@@ -1,3 +1,4 @@
 class Solution:
-    def toLowerCase(self, str: str) -> str:
-        return "".join(chr(ord(c) + ord("a") - ord("A")) if "A" <= c <= "Z" else c for c in str)
+    def toLowerCase(self, s: str) -> str:
+        return ''.join([chr(ord(c) + ord('a') - ord('A'))
+                       if ord('A') <= ord(c) <= ord('Z') else c for c in s])
