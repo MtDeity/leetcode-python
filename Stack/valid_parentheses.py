@@ -1,6 +1,9 @@
+from typing import List
+
+
 class Solution:
     def isValid(self, s: str) -> bool:
-        brackets = []
+        brackets: List[str] = []
         mapping = {
             ')': '(',
             '}': '{',
@@ -8,7 +11,7 @@ class Solution:
         }
         for c in s:
             if c in mapping:
-                if not brackets or mapping[c] != brackets.pop():
+                if not brackets or brackets.pop() != mapping[c]:
                     return False
             else:
                 brackets.append(c)
