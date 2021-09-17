@@ -1,12 +1,9 @@
-from typing import List
-
-
 class Solution:
-    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+    def intersect(self, nums1: list[int], nums2: list[int]) -> list[int]:
         nums1.sort()
         nums2.sort()
         i = j = 0
-        res: List[int] = []
+        res: list[int] = []
         while i < len(nums1) and j < len(nums2):
             if nums1[i] == nums2[j]:
                 res.append(nums1[i])
