@@ -1,5 +1,5 @@
 class Solution:
-    def sortedSquares(self, nums: List[int]) -> List[int]:
+    def sortedSquares(self, nums: list[int]) -> list[int]:
         length = len(nums)
         squares = [0] * length
         left = 0
