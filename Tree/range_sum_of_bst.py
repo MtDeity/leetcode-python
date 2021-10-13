@@ -1,36 +1,38 @@
-# Definition for a binary tree node.
+from __future__ import annotations
+from typing import Optional
+from collections import deque
+
+
 class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
+    def __init__(self,
+                 val: int = 0,
+                 left: Optional[TreeNode] = None,
+                 right: Optional[TreeNode] = None):
         self.val = val
         self.left = left
         self.right = right
 
 
 class Solution:
-    def rangeSumBST(self, root: TreeNode, low: int, high: int) -> int:
-        # Recursive
+    def rangeSumBST(
+            self,
+            root: Optional[TreeNode],
+            low: int,
+            high: int) -> int:
         if not root:
             return 0
-        elif root.val < low:
-            return self.rangeSumBST(root.right, low, high)
-        elif root.val > high:
-            return self.rangeSumBST(root.left, low, high)
-        else:
-            return root.val + self.rangeSumBST(root.left, low, high) + self.rangeSumBST(root.right, low, high)
-
-        # # Iterative
-        # total = 0
-        # stack = [root]
-        # while stack:
-        #     top = stack.pop()
-        #     if not top:
-        #         continue
-        #     elif top.val < low:
-        #         stack.append(top.right)
-        #     elif top.val > high:
-        #         stack.append(top.left)
-        #     else:
-        #         total += top.val
-        #         stack.append(top.left)
-        #         stack.append(top.right)
-        # return total
+        res = 0
+        d: deque[Optional[TreeNode]] = deque([root])
+        while d:
+            node = d.popleft()
+            if not node:
+                continue
+            if node.val < low:
+                d.append(node.right)
+            elif node.val > high:
+                d.append(node.left)
+            else:
+                res += node.val
+                d.append(node.left)
+                d.append(node.right)
+        return res
